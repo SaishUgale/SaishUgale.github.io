@@ -1,5 +1,6 @@
 "use client";
 
+// Trigger rebuild for GitHub Pages Actions source switch
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Mail, Phone, MapPin, Send, CheckCircle } from "lucide-react";
