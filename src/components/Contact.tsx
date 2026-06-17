@@ -16,18 +16,30 @@ export default function Contact() {
     setFormStatus("submitting");
 
     try {
-      const response = await fetch("/api/contact", {
+      const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_KEY || "YOUR_ACCESS_KEY_HERE";
+      
+      const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "Accept": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          access_key: accessKey,
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          subject: `📬 New Portfolio Message from ${formData.name}`,
+        }),
       });
 
-      if (response.ok) {
+      const result = await response.json();
+
+      if (response.ok && result.success) {
         setFormStatus("success");
         setFormData({ name: "", email: "", message: "" });
       } else {
+        console.error("Form submission failed:", result);
         setFormStatus("error");
       }
     } catch (error) {
