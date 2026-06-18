@@ -55,7 +55,7 @@ export default function GoogleAmbassador() {
               </div>
             }
           >
-            <div className="w-full h-full flex flex-col justify-between p-8 md:p-12 relative overflow-hidden bg-gradient-to-br from-zinc-50 to-white dark:from-zinc-900 dark:to-black border border-zinc-200/50 dark:border-transparent text-left">
+            <div className="w-full h-full flex flex-col justify-between p-5 md:p-12 relative overflow-hidden bg-gradient-to-br from-zinc-50 to-white dark:from-zinc-900 dark:to-black border border-zinc-200/50 dark:border-transparent text-left">
               {/* Background design elements */}
               <div className="absolute right-[-10%] top-[-10%] w-[300px] h-[300px] rounded-full bg-accent-blue/10 blur-[80px]" />
               <div className="absolute left-[-5%] bottom-[-10%] w-[250px] h-[250px] rounded-full bg-accent-violet/10 blur-[80px]" />
@@ -89,18 +89,18 @@ export default function GoogleAmbassador() {
               </div>
 
               {/* Card Footer Metrics */}
-              <div className="grid grid-cols-3 gap-4 border-t border-zinc-200 dark:border-white/5 pt-6">
+              <div className="grid grid-cols-3 gap-2 sm:gap-4 border-t border-zinc-200 dark:border-white/5 pt-4 md:pt-6">
                 <div>
-                  <p className="text-[10px] text-muted-foreground uppercase tracking-wider">Ranking</p>
-                  <p className="text-sm md:text-base font-bold text-foreground">Top 10 India</p>
+                  <p className="text-[9px] sm:text-[10px] text-muted-foreground uppercase tracking-wider">Ranking</p>
+                  <p className="text-xs sm:text-sm md:text-base font-bold text-foreground">Top 10 India</p>
                 </div>
                 <div>
-                  <p className="text-[10px] text-muted-foreground uppercase tracking-wider">Reach</p>
-                  <p className="text-sm md:text-base font-bold text-foreground">400+ Members</p>
+                  <p className="text-[9px] sm:text-[10px] text-muted-foreground uppercase tracking-wider">Reach</p>
+                  <p className="text-xs sm:text-sm md:text-base font-bold text-foreground">400+ Members</p>
                 </div>
                 <div>
-                  <p className="text-[10px] text-muted-foreground uppercase tracking-wider">Representation</p>
-                  <p className="text-sm md:text-base font-bold text-foreground">Dubai Delegate</p>
+                  <p className="text-[9px] sm:text-[10px] text-muted-foreground uppercase tracking-wider">Representation</p>
+                  <p className="text-xs sm:text-sm md:text-base font-bold text-foreground">Dubai Delegate</p>
                 </div>
               </div>
             </div>
@@ -126,7 +126,7 @@ export default function GoogleAmbassador() {
                   {step.icon}
                 </div>
 
-                <div className="glass-card p-6 rounded-2xl group-hover:border-accent-blue/20 transition-all">
+                <div className="glass-card p-5 md:p-6 rounded-2xl group-hover:border-accent-blue/20 transition-all">
                   <h4 className="font-display font-semibold text-lg text-foreground mb-2">
                     {step.title}
                   </h4>

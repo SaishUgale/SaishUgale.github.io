@@ -107,7 +107,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="font-display font-bold text-5xl md:text-7xl lg:text-8xl tracking-tight leading-none mb-6 text-foreground"
+            className="font-display font-bold text-4xl sm:text-5xl md:text-7xl lg:text-8xl tracking-tight leading-none mb-6 text-foreground"
           >
             Hi, I'm <span className="text-gradient">Saish Ugale</span>
           </motion.h1>
@@ -141,11 +141,11 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4"
+            className="flex items-center justify-center lg:justify-start gap-4"
           >
             <button
               onClick={() => scrollToSection("projects")}
-              className="group flex items-center gap-2 px-6 py-3.5 rounded-full bg-gradient-to-r from-accent-blue to-accent-violet text-white font-semibold shadow-lg hover:shadow-accent-blue/30 hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer w-full sm:w-auto justify-center"
+              className="group flex items-center gap-2 px-6 py-3.5 rounded-full bg-gradient-to-r from-accent-blue to-accent-violet text-white font-semibold shadow-lg hover:shadow-accent-blue/30 hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer w-auto justify-center"
             >
               <span>View Projects</span>
               <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />

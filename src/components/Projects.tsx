@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { usePortfolio } from "@/context/PortfolioContext";
 import { motion, AnimatePresence } from "framer-motion";
-import { ExternalLink, ChevronDown, ChevronUp, Terminal, Award, Users, Heart } from "lucide-react";
+import { ExternalLink, ChevronDown, ChevronUp, Terminal, Award, Users } from "lucide-react";
 import { Github } from "@/components/Icons";
 
 interface ProjectDetails {
@@ -71,9 +71,7 @@ const projectsData: ProjectDetails[] = [
         "Implemented secure JWT-based authentication and role-based access control (RBAC) for data security.",
         "Wrote automated test suites for validation of health record schemas in MongoDB."
       ]
-    },
-    github: "https://github.com",
-    demo: "https://demo.com"
+    }
   },
   {
     title: "EduAI",
@@ -101,7 +99,7 @@ const projectsData: ProjectDetails[] = [
         "Configured relational database schemas in MySQL, optimizing queries for student history reports."
       ]
     },
-    github: "https://github.com"
+    github: "https://github.com/SaishUgale/EduAI"
   }
 ];
 
@@ -152,7 +150,7 @@ export default function Projects() {
               <motion.div
                 layout="position"
                 key={index}
-                className="glass-card rounded-3xl p-8 border border-white/5 relative overflow-hidden bg-gradient-to-br from-white/[0.02] to-transparent shadow-xl"
+                className="glass-card rounded-3xl p-5 md:p-8 border border-white/5 relative overflow-hidden bg-gradient-to-br from-white/[0.02] to-transparent shadow-xl"
               >
                 {/* Background decorative glows */}
                 <div className="absolute right-0 bottom-0 w-[200px] h-[200px] rounded-full bg-accent-blue/5 blur-[50px] pointer-events-none" />

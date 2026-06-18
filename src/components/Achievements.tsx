@@ -76,7 +76,7 @@ export default function Achievements() {
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               whileHover={{ y: -6, transition: { duration: 0.2 } }}
-              className="glass-card p-6 rounded-3xl bg-gradient-to-br from-white/[0.01] to-transparent shadow-lg flex flex-col justify-between h-full min-h-[220px]"
+              className="glass-card p-5 md:p-6 rounded-3xl bg-gradient-to-br from-white/[0.01] to-transparent shadow-lg flex flex-col justify-between h-full min-h-[220px]"
             >
               <div>
                 <div className="flex items-center justify-between mb-4">

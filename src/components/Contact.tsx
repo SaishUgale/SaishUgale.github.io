@@ -139,7 +139,7 @@ export default function Contact() {
 
           {/* Message Form (Right side, cols 7) */}
           <div className="lg:col-span-7">
-            <div className="glass-card p-8 rounded-3xl border border-white/10 bg-gradient-to-br from-white/[0.02] to-transparent shadow-xl h-full flex flex-col justify-center">
+            <div className="glass-card p-5 md:p-8 rounded-3xl border border-white/10 bg-gradient-to-br from-white/[0.02] to-transparent shadow-xl h-full flex flex-col justify-center">
               
               <AnimatePresence mode="wait">
                 {formStatus === "success" ? (
@@ -181,7 +181,7 @@ export default function Contact() {
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                         required
-                        placeholder="John Doe"
+                        placeholder="Your Name"
                         className="w-full px-4 py-3.5 rounded-2xl bg-white/5 border border-white/5 hover:border-white/10 focus:border-accent-blue/50 focus:outline-none text-foreground text-sm transition-all focus:ring-1 focus:ring-accent-blue/50"
                       />
                     </div>
@@ -196,7 +196,7 @@ export default function Contact() {
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                         required
-                        placeholder="john@example.com"
+                        placeholder="Your Email"
                         className="w-full px-4 py-3.5 rounded-2xl bg-white/5 border border-white/5 hover:border-white/10 focus:border-accent-blue/50 focus:outline-none text-foreground text-sm transition-all focus:ring-1 focus:ring-accent-blue/50"
                       />
                     </div>

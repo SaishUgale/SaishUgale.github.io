@@ -167,6 +167,7 @@ export default function Skills() {
                   fill="rgba(79, 124, 255, 0.2)"
                   stroke="#4F7CFF"
                   strokeWidth={lens === "pm" ? "2.5" : "1.5"}
+                  initial={{ fillOpacity: 0.2 }}
                   animate={{
                     fillOpacity: lens === "pm" ? 0.35 : 0.15,
                   }}
@@ -177,6 +178,7 @@ export default function Skills() {
                   fill="rgba(168, 85, 247, 0.2)"
                   stroke="#A855F7"
                   strokeWidth={lens === "dev" ? "2.5" : "1.5"}
+                  initial={{ fillOpacity: 0.2 }}
                   animate={{
                     fillOpacity: lens === "dev" ? 0.35 : 0.15,
                   }}
@@ -232,7 +234,7 @@ export default function Skills() {
             </div>
             
             {/* Chart Legend */}
-            <div className="flex gap-6 mt-6 text-xs font-semibold">
+            <div className="flex flex-wrap gap-x-6 gap-y-3 mt-6 text-xs font-semibold justify-center lg:justify-start">
               <div className="flex items-center gap-2">
                 <span className="w-3 h-3 rounded-full bg-accent-blue border border-accent-blue/30" />
                 <span className={lens === "pm" ? "text-accent-blue" : "text-muted-foreground"}>Product Management Profile</span>
@@ -250,7 +252,7 @@ export default function Skills() {
             {/* PM Skills Subsection */}
             <motion.div
               layout="position"
-              className={`p-6 rounded-3xl transition-all duration-500 border ${
+              className={`p-5 md:p-6 rounded-3xl transition-all duration-500 border ${
                 lens === "pm" 
                   ? "bg-accent-blue/5 border-accent-blue/25 shadow-xl shadow-accent-blue/5" 
                   : "bg-white/[0.01] border-white/5 opacity-70"
@@ -289,7 +291,7 @@ export default function Skills() {
             {/* Developer Skills Subsection */}
             <motion.div
               layout="position"
-              className={`p-6 rounded-3xl transition-all duration-500 border ${
+              className={`p-5 md:p-6 rounded-3xl transition-all duration-500 border ${
                 lens === "dev" 
                   ? "bg-accent-violet/5 border-accent-violet/25 shadow-xl shadow-accent-violet/5" 
                   : "bg-white/[0.01] border-white/5 opacity-70"
