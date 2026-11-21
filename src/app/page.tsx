@@ -1,60 +1,67 @@
 "use client";
 
-import { PortfolioProvider, usePortfolio } from "@/context/PortfolioContext";
+import { PortfolioProvider } from "@/context/PortfolioContext";
+import ArchitecturalGrid from "@/components/ArchitecturalGrid";
 import FloatingNav from "@/components/FloatingNav";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
-import GoogleAmbassador from "@/components/GoogleAmbassador";
-import Projects from "@/components/Projects";
+import Philosophy from "@/components/Philosophy";
+import Workflow from "@/components/Workflow";
+import Experience from "@/components/Experience";
+import CaseStudies from "@/components/CaseStudies";
+import PrototypingLab from "@/components/PrototypingLab";
+import Toolkit from "@/components/Toolkit";
 import Skills from "@/components/Skills";
 import Achievements from "@/components/Achievements";
 import Education from "@/components/Education";
 import Contact from "@/components/Contact";
-import { motion } from "framer-motion";
 
 function PortfolioContent() {
-  const { lens } = usePortfolio();
-
-  // Map of sections to render
-  const sections: { [key: string]: React.ReactNode } = {
-    home: <Hero key="home-section" />,
-    about: <About key="about-section" />,
-    experience: <GoogleAmbassador key="exp-section" />,
-    skills: <Skills key="skills-section" />,
-    projects: <Projects key="projects-section" />,
-    achievements: <Achievements key="ach-section" />,
-    education: <Education key="edu-section" />,
-    contact: <Contact key="contact-section" />,
-  };
-
-  // Reorder sections based on selected lens
-  const sectionOrder = lens === "pm"
-    ? ["home", "about", "experience", "skills", "projects", "achievements", "education", "contact"]
-    : ["home", "about", "projects", "skills", "experience", "achievements", "education", "contact"];
-
   return (
-    <div className="relative min-h-screen flex flex-col">
-      {/* Background tactile grain texture overlay */}
-      <div className="absolute inset-0 noise-bg z-40 pointer-events-none" />
+    <div className="relative min-h-screen flex flex-col bg-[#F2F3F3] text-[#17191D]">
+      {/* Signature Animated Architectural Background Gridlines */}
+      <ArchitecturalGrid />
 
-      {/* Floating Sticky Navigation */}
+      {/* Sticky Floating Studio Navigation */}
       <FloatingNav />
 
-      {/* Main content area */}
-      <main className="flex-1">
-        {sectionOrder.map((sectionId) => (
-          <motion.div
-            key={sectionId}
-            layout="position"
-            transition={{
-              type: "spring",
-              stiffness: 140,
-              damping: 22,
-            }}
-          >
-            {sections[sectionId]}
-          </motion.div>
-        ))}
+      {/* Website Information Architecture */}
+      <main className="flex-1 relative z-10">
+        {/* Hero Section */}
+        <Hero />
+
+        {/* 01 / About Me */}
+        <About />
+
+        {/* Core Principles Philosophy */}
+        <Philosophy />
+
+        {/* Methodology / Workflow */}
+        <Workflow />
+
+        {/* 02 / Professional Experience */}
+        <Experience />
+
+        {/* 03 / Featured Product Case Studies */}
+        <CaseStudies />
+
+        {/* 04 / AI Prototyping Lab */}
+        <PrototypingLab />
+
+        {/* 05 / Product Management Toolkit */}
+        <Toolkit />
+
+        {/* Core Competencies Skills */}
+        <Skills />
+
+        {/* 06 / Achievements & Recognition */}
+        <Achievements />
+
+        {/* 07 / Academic Foundation */}
+        <Education />
+
+        {/* 08 / Contact & Studio Ledger */}
+        <Contact />
       </main>
     </div>
   );

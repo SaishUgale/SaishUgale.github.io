@@ -2,12 +2,9 @@
 
 import React, { createContext, useContext, useState, useEffect } from "react";
 
-type Lens = "pm" | "dev";
-type Theme = "dark" | "light";
+type Theme = "light" | "dark";
 
 interface PortfolioContextType {
-  lens: Lens;
-  setLens: (lens: Lens) => void;
   theme: Theme;
   toggleTheme: () => void;
 }
@@ -15,25 +12,45 @@ interface PortfolioContextType {
 const PortfolioContext = createContext<PortfolioContextType | undefined>(undefined);
 
 export function PortfolioProvider({ children }: { children: React.ReactNode }) {
-  const [lens, setLens] = useState<Lens>("dev");
-  const [theme, setTheme] = useState<Theme>("dark");
+  const [theme, setTheme] = useState<Theme>("light");
 
   useEffect(() => {
-    // Sync theme with HTML class
-    const root = window.document.documentElement;
-    if (theme === "light") {
-      root.classList.add("light");
+    // Check saved preference or system preference on initial mount
+    const saved = localStorage.getItem("saish_theme") as Theme | null;
+    if (saved === "light" || saved === "dark") {
+      setTheme(saved);
+      if (saved === "dark") {
+        document.documentElement.classList.add("dark");
+        document.documentElement.classList.remove("light");
+      } else {
+        document.documentElement.classList.add("light");
+        document.documentElement.classList.remove("dark");
+      }
     } else {
-      root.classList.remove("light");
+      // Default to light (warm off-white)
+      document.documentElement.classList.add("light");
+      document.documentElement.classList.remove("dark");
     }
-  }, [theme]);
+  }, []);
 
   const toggleTheme = () => {
-    setTheme((prev) => (prev === "dark" ? "light" : "dark"));
+    setTheme((prev) => {
+      const next = prev === "dark" ? "light" : "dark";
+      localStorage.setItem("saish_theme", next);
+      const root = document.documentElement;
+      if (next === "dark") {
+        root.classList.add("dark");
+        root.classList.remove("light");
+      } else {
+        root.classList.add("light");
+        root.classList.remove("dark");
+      }
+      return next;
+    });
   };
 
   return (
-    <PortfolioContext.Provider value={{ lens, setLens, theme, toggleTheme }}>
+    <PortfolioContext.Provider value={{ theme, toggleTheme }}>
       {children}
     </PortfolioContext.Provider>
   );

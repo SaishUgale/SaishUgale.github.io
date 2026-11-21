@@ -2,104 +2,95 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { GraduationCap, Calendar, Award } from "lucide-react";
-
-interface EducationItem {
-  institution: string;
-  degree: string;
-  duration: string;
-  grade: string;
-  description?: string;
-}
-
-const educationData: EducationItem[] = [
-  {
-    institution: "Nutan College of Engineering & Research (NCER), Pune",
-    degree: "B.Tech in Computer Science & Engineering",
-    duration: "2023 - 2027",
-    grade: "CGPA: 8.5 / 10",
-    description: "Focusing on Software Engineering, Database Systems, System Design, Data Structures & Algorithms, Object-Oriented Programming, and Project Management methodologies."
-  },
-  {
-    institution: "St. Ursula's Junior College, Pune",
-    degree: "Higher Secondary Certificate (HSC) - Science",
-    duration: "2021 - 2023",
-    grade: "Score: 81.00%",
-    description: "Specialized in Physics, Chemistry, Mathematics, and Computer Science."
-  },
-  {
-    institution: "St. George English School, Pune",
-    degree: "Secondary School Certificate (SSC)",
-    duration: "2020 - 2021",
-    grade: "Score: 90.80%",
-    description: "Completed general secondary education with distinction."
-  }
-];
 
 export default function Education() {
+  const educationList = [
+    {
+      institution: "Nutan College of Engineering & Research, Pune",
+      degree: "B.Tech in Computer Science & Engineering",
+      duration: "2023 - 2027",
+      grade: "CGPA: 8.52 / 10",
+      description:
+        "Building strong technical fundamentals in software architecture, algorithms, and computing systems, channeled directly into product feasibility evaluation and rapid AI prototyping.",
+      isCurrent: true,
+    },
+    {
+      institution: "St. Ursula's Junior College, Pune",
+      degree: "Higher Secondary Certificate (HSC)",
+      duration: "2021 - 2023",
+      grade: "Score: 81%",
+      description:
+        "Higher secondary education with a rigorous focus on Mathematics, Physics, and analytical problem-solving.",
+      isCurrent: false,
+    },
+    {
+      institution: "St. George English School, Pune",
+      degree: "Secondary School Certificate (SSC)",
+      duration: "2020 - 2021",
+      grade: "Score: 90.80%",
+      description:
+        "Secondary schooling establishing foundational academic excellence and extracurricular engagement.",
+      isCurrent: false,
+    },
+  ];
+
   return (
-    <section id="education" className="py-24 relative overflow-hidden bg-gradient-to-b from-transparent to-black/5">
-      <div className="w-full max-w-6xl mx-auto px-4 md:px-8">
-        
-        {/* Section Heading */}
-        <div className="flex flex-col items-center text-center mb-16">
-          <h2 className="font-display font-bold text-3xl md:text-5xl mb-4 tracking-tight">
-            Education <span className="text-gradient">Timeline</span>
-          </h2>
-          <p className="text-muted-foreground text-sm uppercase tracking-wider">
-            Academic Background & Credentials
+    <section id="education" className="py-20 px-4 sm:px-6 md:px-8 border-b border-[#E3E6E8] relative bg-[#F2F3F3]/50">
+      <div className="w-full max-w-6xl mx-auto">
+        {/* Section Header */}
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-8 border-b border-[#E3E6E8] mb-10">
+          <div>
+            <span className="section-id">07 / ACADEMICS</span>
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#17191D] mt-2">
+              Academic Foundation.
+            </h2>
+          </div>
+          <p className="text-xs sm:text-sm text-[#666C76] max-w-md sm:text-right">
+            Engineering education providing the technical rigor needed to collaborate seamlessly with engineering teams.
           </p>
-          <div className="h-1 w-20 bg-gradient-to-r from-accent-blue to-accent-violet rounded-full mt-4" />
         </div>
 
-        {/* Timeline Layout */}
-        <div className="relative border-l border-white/10 pl-6 md:pl-10 ml-4 max-w-4xl mx-auto">
-          {educationData.map((item, index) => (
+        {/* Clean Architectural Ledger */}
+        <div className="editorial-card rounded-2xl overflow-hidden divide-y divide-[#E3E6E8] shadow-xs">
+          {educationList.map((item, idx) => (
             <motion.div
-              key={index}
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.5, delay: index * 0.15 }}
-              className="relative mb-12 last:mb-0 group"
+              key={idx}
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.3, delay: idx * 0.08 }}
+              className="p-6 sm:p-7 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-[#F2F3F3] transition-colors"
             >
-              {/* Timeline dot/node */}
-              <div className="absolute left-[-38px] md:left-[-54px] top-1.5 w-6 h-6 md:w-8 md:h-8 rounded-full bg-background border-2 border-white/10 group-hover:border-accent-blue flex items-center justify-center transition-colors shadow-lg z-10">
-                <GraduationCap size={14} className="text-muted-foreground group-hover:text-accent-blue transition-colors" />
+              <div>
+                <div className="flex items-center gap-2 flex-wrap">
+                  <h3 className="font-bold text-base sm:text-lg text-[#17191D]">
+                    {item.institution}
+                  </h3>
+                  {item.isCurrent && (
+                    <span className="px-2 py-0.5 rounded bg-[#EBF1FC] text-[#064ACB] font-mono text-[10px] font-bold">
+                      CURRENT
+                    </span>
+                  )}
+                </div>
+                <p className="text-xs sm:text-sm font-semibold text-[#064ACB] mt-0.5">
+                  {item.degree}
+                </p>
+                <p className="text-xs text-[#666C76] mt-1 max-w-2xl leading-relaxed">
+                  {item.description}
+                </p>
               </div>
 
-              {/* Education details card */}
-              <div className="glass-card p-6 md:p-8 rounded-3xl border border-white/5 group-hover:border-accent-blue/15 transition-all bg-gradient-to-br from-white/[0.01] to-transparent shadow-md">
-                <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-4">
-                  <div>
-                    <h3 className="font-display font-bold text-lg md:text-xl text-foreground mb-1 leading-snug">
-                      {item.institution}
-                    </h3>
-                    <p className="text-sm font-semibold text-accent-blue">
-                      {item.degree}
-                    </p>
-                  </div>
-                  <div className="flex flex-row md:flex-col items-center md:items-end gap-3 md:gap-1 mt-1">
-                    <span className="flex items-center gap-1.5 text-xs text-muted-foreground bg-white/5 px-2.5 py-1 rounded-full border border-white/5">
-                      <Calendar size={12} />
-                      {item.duration}
-                    </span>
-                    <span className="flex items-center gap-1.5 text-xs font-semibold text-accent-violet bg-accent-violet/10 px-2.5 py-1 rounded-full border border-accent-violet/20">
-                      <Award size={12} />
-                      {item.grade}
-                    </span>
-                  </div>
-                </div>
-                {item.description && (
-                  <p className="text-sm text-muted-foreground leading-relaxed border-t border-white/5 pt-4">
-                    {item.description}
-                  </p>
-                )}
+              <div className="sm:text-right shrink-0 font-mono text-xs border-t sm:border-t-0 pt-2 sm:pt-0 border-[#E3E6E8]">
+                <span className="font-bold text-sm text-[#17191D] block">
+                  {item.grade}
+                </span>
+                <span className="text-[#969BA5] text-[11px]">
+                  {item.duration}
+                </span>
               </div>
             </motion.div>
           ))}
         </div>
-
       </div>
     </section>
   );

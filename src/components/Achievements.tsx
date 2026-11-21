@@ -2,102 +2,139 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Trophy, Award, GraduationCap, Plane, Sparkles } from "lucide-react";
 
-interface Achievement {
+interface Milestone {
+  index: string;
   title: string;
-  subtitle: string;
+  badge: string;
+  organization: string;
+  year: string;
   description: string;
-  icon: React.ReactNode;
-  colorClass: string;
 }
 
-const achievements: Achievement[] = [
+const milestonesData: Milestone[] = [
   {
-    title: "Cummins India Scholarship 2026",
-    subtitle: "Nurturing Brilliance Recipient",
-    description: "Awarded a prestigious scholarship recognizing academic excellence and leadership potential in engineering.",
-    icon: <GraduationCap size={24} className="text-accent-blue" />,
-    colorClass: "text-accent-blue"
-  },
-  {
+    index: "01",
     title: "Top 10 Google Student Ambassador",
-    subtitle: "National Recognition (India)",
-    description: "Honored in the top 10 ambassadors nationally from a pool of 10,000+ applicants for outstanding program results.",
-    icon: <Trophy size={24} className="text-accent-violet" />,
-    colorClass: "text-accent-violet"
+    badge: "National Top 10",
+    organization: "Google India",
+    year: "2024 - 2025",
+    description:
+      "Ranked in the top 10 ambassadors nationwide from an applicant pool of 10,000+ candidates for outstanding community engagement, Gemini advocacy, and adoption workshops.",
   },
   {
-    title: "Dubai AI Film Festival Delegate",
-    subtitle: "Fully-Sponsored International Visit",
-    description: "Invited to represent the community in Dubai, recognizing exceptional performance in AI advocacy.",
-    icon: <Plane size={24} className="text-accent-blue" />,
-    colorClass: "text-accent-blue"
+    index: "02",
+    title: "3rd Globally at TE AI Cup 2026",
+    badge: "Global AI Podium",
+    organization: "TE Connectivity & AI Community",
+    year: "2026",
+    description:
+      "Secured 3rd place globally in an international AI innovation competition, recognized for practical AI system architecture, deterministic execution, and end-user problem framing.",
   },
   {
+    index: "03",
+    title: "Cummins India Scholarship 2026",
+    badge: "Nurturing Brilliance Recipient",
+    organization: "Cummins India Foundation",
+    year: "2026",
+    description:
+      "Awarded prestigious merit-based scholarship recognizing academic excellence, technical problem-solving capabilities, and leadership potential in technology.",
+  },
+  {
+    index: "04",
+    title: "Dubai International Recognition",
+    badge: "Sponsored Global Delegate",
+    organization: "1 Billion Followers Summit & AI Film Festival",
+    year: "2025",
+    description:
+      "Selected among top Indian students for a fully sponsored international visit to Dubai, representing student product advocacy and creative AI storytelling on a global stage.",
+  },
+  {
+    index: "05",
     title: "Smart India Hackathon 2024",
-    subtitle: "1st Place (Institute Level)",
-    description: "Won first prize at the college level for designing a robust, scale-ready administrative portal.",
-    icon: <Award size={24} className="text-accent-violet" />,
-    colorClass: "text-accent-violet"
+    badge: "1st Place (Institute Level)",
+    organization: "Ministry of Education & SIH",
+    year: "2024",
+    description:
+      "Won 1st prize at institute level for formulating a user-centric digital portal addressing public service delivery challenges under strict hackathon evaluation.",
   },
   {
-    title: "Tech Pragyan Hackathon 2025",
-    subtitle: "Top 20 Finalist",
-    description: "Competed in the final round of the national hackathon, building prototype applications within 24 hours.",
-    icon: <Sparkles size={24} className="text-accent-blue" />,
-    colorClass: "text-accent-blue"
-  }
+    index: "06",
+    title: "Tech Pragyan 2025",
+    badge: "Top 20 Finalist",
+    organization: "National Technical Innovation Forum",
+    year: "2025",
+    description:
+      "Selected as top 20 finalist across national applicants for designing and prototyping functional technology solutions addressing industry-level problem statements.",
+  },
 ];
 
 export default function Achievements() {
   return (
-    <section id="achievements" className="py-24 relative overflow-hidden">
-      <div className="w-full max-w-6xl mx-auto px-4 md:px-8">
-        
-        {/* Section Heading */}
-        <div className="flex flex-col items-center text-center mb-16">
-          <h2 className="font-display font-bold text-3xl md:text-5xl mb-4 tracking-tight">
-            Key <span className="text-gradient">Achievements</span>
-          </h2>
-          <p className="text-muted-foreground text-sm uppercase tracking-wider">
-            Honors, Scholarships & Competitions
+    <section id="achievements" className="py-24 px-4 sm:px-6 md:px-8 border-b border-[#E3E6E8] relative">
+      <div className="w-full max-w-6xl mx-auto">
+        {/* Section Header */}
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-8 border-b border-[#E3E6E8] mb-12">
+          <div>
+            <span className="section-id">06 / RECOGNITION</span>
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#17191D] mt-2">
+              Milestones That Matter.
+            </h2>
+          </div>
+          <p className="text-xs sm:text-sm text-[#666C76] max-w-md sm:text-right">
+            Verified competitive podium finishes, corporate scholarships, and national product leadership recognitions.
           </p>
-          <div className="h-1 w-20 bg-gradient-to-r from-accent-blue to-accent-violet rounded-full mt-4" />
         </div>
 
-        {/* Grid Layout */}
+        {/* Numbered Swiss-Style Recognition Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {achievements.map((item, index) => (
+          {milestonesData.map((item, idx) => (
             <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
+              key={idx}
+              initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              whileHover={{ y: -6, transition: { duration: 0.2 } }}
-              className="glass-card p-5 md:p-6 rounded-3xl bg-gradient-to-br from-white/[0.01] to-transparent shadow-lg flex flex-col justify-between h-full min-h-[220px]"
+              viewport={{ once: true }}
+              transition={{ duration: 0.35, delay: idx * 0.06 }}
+              className="editorial-card rounded-2xl p-6 sm:p-7 flex flex-col justify-between shadow-xs hover:border-[#064ACB] transition-colors"
             >
               <div>
-                <div className="flex items-center justify-between mb-4">
-                  <div className="p-3 rounded-2xl bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 shadow-inner">
-                    {item.icon}
-                  </div>
+                <div className="flex items-center justify-between font-mono text-xs mb-3">
+                  <span className="text-2xl font-bold text-[#17191D]">
+                    {item.index}
+                  </span>
+                  <span className="text-[#969BA5]">{item.year}</span>
                 </div>
-                <h3 className="font-display font-bold text-lg text-foreground mb-1 leading-snug">
+
+                {item.index === "01" ? (
+                  <span className="inline-flex items-center gap-1 text-[10px] font-mono uppercase tracking-wider text-[#975102] bg-[#F3A953]/15 px-2 py-0.5 rounded border border-[#F3A953]/30 font-bold mb-1">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#F3A953]" />
+                    {item.badge}
+                  </span>
+                ) : (
+                  <span className="text-[10px] font-mono uppercase tracking-wider text-[#064ACB] font-bold block mb-1">
+                    {item.badge}
+                  </span>
+                )}
+
+                <h3 className="font-bold text-base sm:text-lg text-[#17191D] mb-1 leading-snug">
                   {item.title}
                 </h3>
-                <p className={`text-xs font-semibold uppercase tracking-wider mb-2 ${item.colorClass}`}>
-                  {item.subtitle}
+
+                <p className="text-xs font-mono text-[#666C76] mb-3">
+                  {item.organization}
+                </p>
+
+                <p className="text-xs text-[#666C76] leading-relaxed">
+                  {item.description}
                 </p>
               </div>
-              <p className="text-xs text-muted-foreground leading-relaxed">
-                {item.description}
-              </p>
+
+              <div className="pt-4 mt-6 border-t border-[#E3E6E8] text-[10px] font-mono text-[#969BA5]">
+                VERIFIED HONORS
+              </div>
             </motion.div>
           ))}
         </div>
-
       </div>
     </section>
   );

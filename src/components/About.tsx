@@ -1,148 +1,117 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
-import { motion, useInView } from "framer-motion";
-import { Award, BookOpen, GraduationCap, MapPin, Users } from "lucide-react";
-
-interface CountUpProps {
-  target: string;
-  duration?: number;
-  suffix?: string;
-}
-
-function CountUp({ target, duration = 2, suffix = "" }: CountUpProps) {
-  const [count, setCount] = useState(0);
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-50px" });
-
-  useEffect(() => {
-    if (!isInView) return;
-
-    // Remove non-numeric characters for calculation
-    const end = parseInt(target.replace(/[^0-9]/g, ""), 10);
-    if (isNaN(end)) {
-      return;
-    }
-
-    const startTime = performance.now();
-    const totalDuration = duration * 1000;
-
-    let frameId: number;
-
-    const updateCount = (now: number) => {
-      const elapsed = now - startTime;
-      const progress = Math.min(elapsed / totalDuration, 1);
-      
-      // Easing out quadratic
-      const easeProgress = progress * (2 - progress);
-      const current = Math.floor(easeProgress * end);
-
-      setCount(current);
-
-      if (progress < 1) {
-        frameId = requestAnimationFrame(updateCount);
-      } else {
-        setCount(end);
-      }
-    };
-
-    frameId = requestAnimationFrame(updateCount);
-    return () => cancelAnimationFrame(frameId);
-  }, [isInView, target, duration]);
-
-  return (
-    <span ref={ref} className="font-display font-bold text-4xl md:text-5xl text-gradient">
-      {count.toLocaleString()}{suffix}
-    </span>
-  );
-}
+import React from "react";
+import { motion } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
 
 export default function About() {
-  const textRef = useRef(null);
-  const textInView = useInView(textRef, { once: true, margin: "-100px" });
-
-  const stats = [
-    { target: "10", suffix: "K+", label: "National Applicants Competed" },
-    { target: "10", suffix: "th", label: "National Ranking Achieved" },
-    { target: "3", suffix: "+", label: "Scholarships & Major Awards" },
-    { target: "400", suffix: "+", label: "Developer Community Members Led" },
+  const ledgerItems = [
+    {
+      index: "01",
+      label: "Technical Grounding",
+      value: "B.Tech Computer Science & Engineering",
+      sub: "Nutan College of Engineering & Research, Pune",
+      metric: "CGPA 8.52 / 10 (2023 - 2027)",
+    },
+    {
+      index: "02",
+      label: "Product Execution",
+      value: "Product Management Intern",
+      sub: "Edzy.ai (AI Educational Platform)",
+      metric: "6-Week Intensive Discovery & Growth",
+    },
+    {
+      index: "03",
+      label: "Adoption & Growth",
+      value: "Google Student Ambassador",
+      sub: "Gemini AI Advocacy & Campus Outreach",
+      metric: "Top 10 Nationally (10,000+ Candidates)",
+    },
+    {
+      index: "04",
+      label: "Core Methodology",
+      value: "Rapid Prototyping & AI Workflows",
+      sub: "Figma, Cursor, Lottie & LLM Orchestration",
+      metric: "Hypothesis-Driven Experiments",
+    },
   ];
 
   return (
-    <section id="about" className="py-24 relative overflow-hidden">
-      <div className="w-full max-w-6xl mx-auto px-4 md:px-8">
-        {/* Section Title */}
-        <div className="flex flex-col items-center text-center mb-16">
-          <h2 className="font-display font-bold text-3xl md:text-5xl mb-4 tracking-tight">
-            About <span className="text-gradient">Saish</span>
-          </h2>
-          <div className="h-1 w-20 bg-gradient-to-r from-accent-blue to-accent-violet rounded-full" />
+    <section id="about" className="py-24 px-4 sm:px-6 md:px-8 border-b border-[#E3E6E8] relative">
+      <div className="w-full max-w-6xl mx-auto">
+        {/* Section Header with Editorial Identifier */}
+        <div className="flex items-center gap-3 mb-10 pb-4 border-b border-[#E3E6E8]">
+          <span className="section-id">01 / ABOUT</span>
+          <span className="text-[#969BA5] text-xs font-mono">•</span>
+          <span className="font-mono text-xs uppercase tracking-wider text-[#666C76]">
+            Background &amp; Curiosity
+          </span>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          {/* Narrative Biography (Left side, cols 7) */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+          {/* Left Column: Two-Column Narrative Layout with Pull Quote */}
           <motion.div
-            ref={textRef}
-            initial={{ opacity: 0, x: -40 }}
-            animate={textInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -40 }}
-            transition={{ duration: 0.6 }}
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
             className="lg:col-span-7 flex flex-col gap-6"
           >
-            <h3 className="font-display text-2xl font-semibold text-foreground flex items-center gap-2">
-              <BookOpen className="text-accent-blue" size={24} />
-              Bridging Technology and Strategy
-            </h3>
-            
-            <p className="text-muted-foreground leading-relaxed text-base md:text-lg">
-              I am a Computer Science undergraduate at <strong>Nutan College of Engineering & Research, Pune</strong> (B.Tech CSE, 2027 batch, current CGPA 8.5/10). I position myself at the intersection of engineering execution and product design, communicating effectively in the language of both developers and stakeholders.
-            </p>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#17191D] leading-[1.12]">
+              A Product Mindset With a Builder&apos;s Curiosity.
+            </h2>
 
-            <p className="text-muted-foreground leading-relaxed text-base">
-              As a developer, I build scalable systems and architect solutions, focusing on React, Node.js, Python, and cloud services. As a product strategist, I map business value to technical requirements, design workflows, track performance indicators, and champion user-centric feature backlogs.
-            </p>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
-              <div className="flex items-center gap-3 p-3 rounded-xl bg-white/5 border border-white/5">
-                <GraduationCap className="text-accent-violet" size={20} />
-                <div>
-                  <p className="text-[11px] text-muted-foreground uppercase">Education</p>
-                  <p className="text-sm font-semibold">B.Tech CSE, NCER Pune</p>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-3 p-3 rounded-xl bg-white/5 border border-white/5">
-                <MapPin className="text-accent-blue" size={20} />
-                <div>
-                  <p className="text-[11px] text-muted-foreground uppercase">Location</p>
-                  <p className="text-sm font-semibold">Pune, Maharashtra, India</p>
-                </div>
-              </div>
+            <div className="p-5 rounded-2xl bg-[#FFFFFF] border-l-2 border-[#064ACB] border-y border-r border-[#E2E5E9]">
+              <p className="text-base sm:text-lg font-medium text-[#17191D] leading-relaxed italic">
+                &ldquo;I began with a technical foundation in Computer Science, but gradually became more curious about the decisions behind successful products. What problems are worth solving? Why do users choose one experience over another? How should teams prioritize? And how can we test an idea before investing heavily in it?&rdquo;
+              </p>
             </div>
+
+            <p className="text-base text-[#666C76] leading-relaxed">
+              That curiosity brought me towards Product Management.
+            </p>
+
+            <p className="text-base text-[#666C76] leading-relaxed">
+              I now enjoy exploring products from multiple perspectives: researching competitors, understanding workflows, evaluating user experiences, thinking through product opportunities, and experimenting with AI tools to turn concepts into prototypes.
+            </p>
+
+            <p className="text-base text-[#666C76] leading-relaxed">
+              I particularly enjoy the space where product thinking meets hands-on creation. For me, a prototype is not just a design exercise. It is a way to make an idea tangible, explore assumptions, and learn faster.
+            </p>
           </motion.div>
 
-          {/* Stats Grid (Right side, cols 5) */}
-          <div className="lg:col-span-5 grid grid-cols-2 gap-4">
-            {stats.map((stat, index) => {
-              const statRef = useRef(null);
-              const statInView = useInView(statRef, { once: true, margin: "-50px" });
+          {/* Right Column: Architectural Career Ledger */}
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.15 }}
+            className="lg:col-span-5 flex flex-col"
+          >
+            <div className="text-[10px] font-mono uppercase tracking-widest text-[#969BA5] mb-3">
+              Career Trajectory &amp; Foundations
+            </div>
 
-              return (
-                <motion.div
-                  key={index}
-                  ref={statRef}
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={statInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="glass-card p-6 rounded-2xl flex flex-col justify-between h-[150px] shadow-lg"
-                >
-                  <CountUp target={stat.target} suffix={stat.suffix} />
-                  <p className="text-xs font-medium text-muted-foreground/80 tracking-wide mt-2">
-                    {stat.label}
+            <div className="divide-y divide-[#E3E6E8] border-y border-[#E3E6E8] bg-[#FFFFFF] rounded-2xl border border-[#E2E5E9] overflow-hidden">
+              {ledgerItems.map((item, idx) => (
+                <div key={idx} className="p-4 hover:bg-[#F2F3F3] transition-colors">
+                  <div className="flex items-center justify-between text-[10px] font-mono text-[#969BA5] mb-1">
+                    <span>{item.index}</span>
+                    <span className="uppercase text-[#064ACB] font-semibold">{item.label}</span>
+                  </div>
+                  <h3 className="font-bold text-sm text-[#17191D]">
+                    {item.value}
+                  </h3>
+                  <p className="text-xs text-[#666C76] mt-0.5">
+                    {item.sub}
                   </p>
-                </motion.div>
-              );
-            })}
-          </div>
+                  <p className="text-[11px] font-mono text-[#17191D] font-medium mt-1.5">
+                    {item.metric}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>
