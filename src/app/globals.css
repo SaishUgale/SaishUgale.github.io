@@ -9,7 +9,7 @@
   --color-accent-blue: #064ACB;
   --color-accent-blue-secondary: #366ED8;
   --color-accent-orange: #F3A953;
-  --color-gridlines: #E3E6E8;
+  --color-gridlines: #C8E3CD;
   --color-card-border: #E2E5E9;
   --color-accent-soft: #EBF1FC;
   --font-sans: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -25,7 +25,7 @@
   --accent-blue: #064ACB;
   --accent-blue-secondary: #366ED8;
   --accent-orange: #F3A953;
-  --gridline-color: #E3E6E8;
+  --gridline-color: #C8E3CD;
   --border-card: #E2E5E9;
   --bg-accent-soft: #EBF1FC;
   color-scheme: light;
@@ -50,8 +50,8 @@ body {
 .architectural-grid-bg {
   background-size: 56px 56px;
   background-image: 
-    linear-gradient(to right, #E3E6E8 1px, transparent 1px),
-    linear-gradient(to bottom, #E3E6E8 1px, transparent 1px);
+    linear-gradient(to right, #C8E3CD 1px, transparent 1px),
+    linear-gradient(to bottom, #C8E3CD 1px, transparent 1px);
   background-position: 0 0;
 }
 
