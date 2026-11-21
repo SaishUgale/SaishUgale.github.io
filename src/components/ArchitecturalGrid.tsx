@@ -43,11 +43,11 @@ export default function ArchitecturalGrid() {
       aria-hidden="true"
       className="fixed inset-0 pointer-events-none z-0 overflow-hidden select-none"
     >
-      {/* 1. Base Architectural Gridlines in light green (#C8E3CD) */}
-      <div className="absolute inset-0 architectural-grid-bg opacity-90" />
+      {/* 1. Base Architectural Gridlines in #E3E6E8 */}
+      <div className="absolute inset-0 architectural-grid-bg opacity-75" />
 
       {/* 2. Very subtle ambient animated scanline traveling horizontally */}
-      <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#10B981]/20 to-transparent animate-grid-scan" />
+      <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#064ACB]/15 to-transparent animate-grid-scan" />
 
       {/* 3. Subtle desktop mouse proximity illumination */}
       {mounted && !isMobile && (
